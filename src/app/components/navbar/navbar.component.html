@@ -1,0 +1,48 @@
+<header>
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top p-0">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                aria-controls="collapseExample">
+                <i class="bi bi-list text-white"></i> <!-- Cambiar a un icono de Bootstrap Icons -->
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <img src="../../../assets/img/logo.png" height="50" alt="" loading="lazy" />
+            </a>
+
+            <h2 class="pt-2 text-danger" style="font-weight: 700;">TodoPelis</h2>
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+
+                <!-- Avatar -->
+                <li class="nav-item dropdown" *ngIf="ComprobarLogin();else elseNav">
+                    <a [routerLink]="['/approved']" class="w-100">
+                        <img src="https://cdn4.iconfinder.com/data/icons/bold-circular-app-web-icons/1153/circle_user_bold-512.png"
+                            class="rounded-circle" height="35" alt="" loading="lazy" (click)="doLogin()" />
+                    </a>
+                </li>
+
+                <ng-template #elseNav>
+                    <li class="nav-item dropdown">
+                        <a [routerLink]="['/perfil']" class="w-100">
+                            <img src="{{avatarUrl}}" class="rounded-circle mx-2" height="35" alt="" loading="lazy"
+                                onerror="src='https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg'" />
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown mt-1">
+                        <a [routerLink]="['/home']" class="w-100 text-danger" (click)="logOut()">
+                            <mat-icon fontIcon="logout"></mat-icon>
+                        </a>
+                    </li>
+                </ng-template>
+            </ul>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+</header>
