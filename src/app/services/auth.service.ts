@@ -13,11 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   getRequestToken(): Observable<GetRequestTokenResponse> {
-    return this.http.get<GetRequestTokenResponse>(`${environment.apiBaseUrl}/authentication/token/new?api_key=78d6414b91baf8d0ca5de73fecb5b290`);
+    return this.http.get<GetRequestTokenResponse>(`${environment.apiBaseUrl}/authentication/token/new?${environment.apiKey}`);
   }
 
   createSession(token: string): Observable<CreateSessionResponse> {
-    return this.http.post<CreateSessionResponse>(`${environment.apiBaseUrl}/authentication/session/new?api_key=78d6414b91baf8d0ca5de73fecb5b290`,
+    debugger
+    return this.http.post<CreateSessionResponse>(`${environment.apiBaseUrl}/authentication/session/new?${environment.apiKey}`,
       {
         request_token: token
       });

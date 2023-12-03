@@ -1,1 +1,5 @@
-<p>movie-item works!</p>
+<a [routerLink]="['/pelicula', movie.id]" class="image-container">
+    <div class="rounded">
+        <img [src]="getImage()" [alt]="movie.original_title">
+    </div>
+</a>

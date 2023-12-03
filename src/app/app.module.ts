@@ -10,6 +10,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthApprovedComponent } from './components/auth-approved/auth-approved.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileHeaderComponent } from './components/profile-header/profile-header.component';
+import { ProfileComponent } from './ui/profile/profile.component';
+import { ListsListComponent } from './components/lists-list/lists-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PageMovieComponent,
     MovieItemComponent,
     NavbarComponent,
-    AuthApprovedComponent
+    AuthApprovedComponent,
+    ProfileHeaderComponent,
+    ProfileComponent,
+    ListsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

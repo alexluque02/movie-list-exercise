@@ -15,14 +15,17 @@ export class AuthApprovedComponent {
   account!: AccountResponse;
   ngOnInit(): void {
     let token = localStorage.getItem('REQUEST_TOKEN');
-
+    console.log("TOken: " + token)
+    debugger
     this.authService.createSession(token!).subscribe((resp: { session_id: string; }) => {
+      debugger
       localStorage.setItem('SESSION_ID', resp.session_id);
       this.accountService.getAccountDetails().subscribe((resp: AccountResponse) => {
         this.account = resp;
         localStorage.setItem('AVATAR_PATH', ('https://www.themoviedb.org/t/p/w50_and_h50_face' + resp.avatar.tmdb.avatar_path));
         localStorage.setItem('USERNAME', resp.username);
         localStorage.setItem('ACCOUNT_ID', resp.id.toString());
+        console.log("Username: " + localStorage.getItem("USERNAME"))
         window.location.href = '/home'
       });
     });

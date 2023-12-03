@@ -1,0 +1,57 @@
+<div class="row">
+    <h1 class="text-black col-10">Listas</h1>
+    <button class="btn btn-danger col-2" (click)="open(content)">+ Nueva</button>
+</div>
+
+<ul *ngFor="let list of personalLists">
+    <div class="row">
+        <li (click)="openDetails(modalDetails, list.id)">{{list.name}}</li> <a style="cursor: pointer;"
+            class="text-danger underlined" (click)="deleteList(list.id)">Borrar</a>
+    </div>
+</ul>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add List</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label for="name">Nombre</label>
+                <div class="input-group">
+                    <input id="name" class="form-control" placeholder="Escriba un nombre" name="name" type="text"
+                        [formControl]="name" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description">Descripción</label>
+                <div class="input-group">
+                    <textarea id="description" class="form-control" placeholder="Escriba una descripcion"
+                        name="description" type="text" [formControl]="description"> </textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="submit()">Save</button>
+    </div>
+</ng-template>
+
+<ng-template #modalDetails let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{listSelected.name}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>Created By: {{listSelected.created_by}}</p>
+        <p>Description: {{listSelected.description}}</p>
+        <p>Items: ({{listSelected.item_count}})</p>
+        <ul *ngFor="let item of listSelected.items">
+            <li>{{item.original_title}}</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="clear(listSelected.id)">Clear List</button>
+    </div>
+</ng-template>

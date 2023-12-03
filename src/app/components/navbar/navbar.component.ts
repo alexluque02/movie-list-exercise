@@ -25,7 +25,7 @@ export class NavbarComponent {
   ComprobarLogin() {
     this.avatarUrl = localStorage.getItem('AVATAR_PATH');
     this.username = localStorage.getItem('USERNAME');
-    return (localStorage.getItem("AVATAR_PATH") == null)
+    return (localStorage.getItem("USERNAME") == null)
   }
 
   acortarnombre(nombre: string | null) {

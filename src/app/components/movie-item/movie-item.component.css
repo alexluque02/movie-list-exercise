@@ -1,0 +1,35 @@
+img {
+    height: 300px;
+    display: block;
+    left: -100px
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    transition: 0.7s;
+}
+
+.image-container:hover {
+    transform: scale(1.1);
+}
+
+.rounded {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+span {
+    text-shadow: 1px 1px 2px black;
+    ;
+}
+
+@media only screen and (max-width: 990px) {
+    img {
+        height: 150px;
+    }
+}

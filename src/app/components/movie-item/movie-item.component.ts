@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie-item',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class MovieItemComponent {
 
+  @Input() movie: any;
+
+
+  getImage() {
+    return "https://image.tmdb.org/t/p/w500/" + this.movie.poster_path
+  }
 }
