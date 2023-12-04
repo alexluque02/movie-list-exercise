@@ -35,7 +35,7 @@ export class AccountService {
     }
 
     getListDetails(listId: any): Observable<ListResponse> {
-        return this.http.get<ListResponse>(`${environment.apiBaseUrl}/list/${listId}?${environment.apiKey}`)
+        return this.http.get<ListResponse>(`${environment.apiBaseUrl}/list/${listId}?${environment.apiKey}`);
     }
 
     deleteList(listId: any): Observable<StatusResponse> {
@@ -46,6 +46,13 @@ export class AccountService {
         return this.http.post<ClearStatusResponse>(`${environment.apiBaseUrl}/list/${listId}/clear?${environment.apiKey}&session_id=${localStorage.getItem("SESSION_ID")}&confirm=true`,
             {
 
+            })
+    }
+
+    addMovieToList(listId: any, mediaId: any): Observable<StatusResponse> {
+        return this.http.post<StatusResponse>(`${environment.apiBaseUrl}/list/${listId}/add_item?${environment.apiKey}&session_id=${localStorage.getItem("SESSION_ID")}&confirm=true`,
+            {
+                "media_id": mediaId
             })
     }
 }

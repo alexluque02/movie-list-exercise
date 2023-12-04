@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ListsListComponent {
 
+  idList = new FormControl('', Validators.required);
+  idMovie = new FormControl('', Validators.required);
+
   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
   description = new FormControl('', [
     Validators.required,
@@ -32,14 +35,23 @@ export class ListsListComponent {
   }
 
   openDetails(content: TemplateRef<any>, id: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     this.accountService.getListDetails(id).subscribe(resp => {
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
       this.listSelected = resp;
     });
   }
 
+  openModalAdd(content: TemplateRef<any>) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
+
   submit() {
     this.accountService.createList(this.name.value, this.description.value).subscribe()
+    this.modalService.dismissAll()
+  }
+
+  submitAdd() {
+    this.accountService.addMovieToList(this.idList.value, this.idMovie.value).subscribe()
     this.modalService.dismissAll()
   }
 

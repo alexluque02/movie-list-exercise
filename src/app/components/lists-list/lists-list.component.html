@@ -3,10 +3,11 @@
     <button class="btn btn-danger col-2" (click)="open(content)">+ Nueva</button>
 </div>
 
+
 <ul *ngFor="let list of personalLists">
     <div class="row">
-        <li (click)="openDetails(modalDetails, list.id)">{{list.name}}</li> <a style="cursor: pointer;"
-            class="text-danger underlined" (click)="deleteList(list.id)">Borrar</a>
+        <li><button (click)="openDetails(modalDetails, list.id)" class="btn btn-light">{{list.name}}</button></li> <a
+            style="cursor: pointer;" class="text-danger underlined" (click)="deleteList(list.id)">Borrar</a>
     </div>
 </ul>
 
@@ -37,6 +38,7 @@
         <button type="button" class="btn btn-outline-dark" (click)="submit()">Save</button>
     </div>
 </ng-template>
+
 
 <ng-template #modalDetails let-modal>
     <div class="modal-header">

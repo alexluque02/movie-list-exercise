@@ -5,7 +5,7 @@ export interface ListResponse {
     description: string;
     favorite_count: number;
     id: string;
-    items: Item[];
+    items: ListItem[];
     item_count: number;
     iso_639_1: ISO639_1;
     name: string;
@@ -16,7 +16,7 @@ export enum ISO639_1 {
     En = "en",
 }
 
-export interface Item {
+export interface ListItem {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
@@ -32,7 +32,10 @@ export interface Item {
     video: boolean;
     vote_average: number;
     vote_count: number;
+
+
 }
+
 
 export enum MediaType {
     Movie = "movie",

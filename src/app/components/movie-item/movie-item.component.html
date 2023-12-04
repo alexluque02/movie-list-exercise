@@ -1,5 +1,17 @@
-<a [routerLink]="['/pelicula', movie.id]" class="image-container">
+<a (click)="openModal(content)" class="image-container">
     <div class="rounded">
         <img [src]="getImage()" [alt]="movie.original_title">
     </div>
 </a>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Escoge una lista</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <ul *ngFor="let list of listsList">
+            <li><button (click)="addToList(list.id, movie.id)" class="btn btn-light">{{list.name}}</button></li>
+        </ul>
+    </div>
+</ng-template>

@@ -7,7 +7,8 @@ import { ProfileComponent } from './ui/profile/profile.component';
 const routes: Routes = [
   { path: 'home', component: PageMovieComponent },
   { path: 'approved', component: AuthApprovedComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/home' }
 ];
 
 @NgModule({
